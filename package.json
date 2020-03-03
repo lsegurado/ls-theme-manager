@@ -1,0 +1,28 @@
+{
+  "name": "ls-theme-manager",
+  "version": "1.0.1",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "description": "Theme manager for vainilla JS",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "baseUrl": "./src",
+  "paths": {
+    "@/*": [
+      "./*"
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "login": "npm login --registry=https://registry.npmjs.org",
+    "publish-npm": "npm run build && npm version patch && npm publish --access public"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^3.8.3"
+  }
+}
