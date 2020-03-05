@@ -20,9 +20,8 @@
     "login": "npm login --registry=https://registry.npmjs.org",
     "publish-npm": "npm run build && npm version patch && npm publish --access public"
   },
-  "devDependencies": {},
-  "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "typescript": "^3.8.3"
-  }
+  },
+  "license": "MIT"
 }
