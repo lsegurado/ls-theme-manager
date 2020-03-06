@@ -15,19 +15,13 @@ export default class ThemeManager {
         this.setTheme(theme);
         onThemeChange(theme);
 
-        const self = this;
-        new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                if (mutation.type === "attributes") {
-                    if (mutation.attributeName === 'theme' || mutation.attributeName === 'use-system-preferred-theme') {
-                        self.onThemeChange(ThemeManager.getTheme());
-                        localStorage.setItem('theme', ThemeManager.getTheme());
-                    }
-                }
-            });
+        new MutationObserver(() => {
+            this.onThemeChange(ThemeManager.getTheme());
+            localStorage.setItem('theme', ThemeManager.getTheme());
         }).observe(document.documentElement, {
-            attributes: true //configure it to listen to attribute changes
-        })
+            attributes: true, //configure it to listen to attribute changes
+            attributeFilter: ['theme', 'use-system-preferred-theme']
+        });
     }
 
     public setTheme(theme: Theme) {
