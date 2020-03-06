@@ -14,10 +14,12 @@ export default class ThemeManager {
         this.onThemeChange = onThemeChange;
         this.setTheme(theme);
 
+        const self = this;
         new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                if (mutation.type == "attributes") {
+                if (mutation.type === "attributes") {
                     if (mutation.attributeName === 'theme' || mutation.attributeName === 'use-system-preferred-theme') {
+                        self.onThemeChange(ThemeManager.getTheme());
                         localStorage.setItem('theme', ThemeManager.getTheme());
                     }
                 }
@@ -35,7 +37,6 @@ export default class ThemeManager {
             document.documentElement.setAttribute('theme', theme);
             document.documentElement.setAttribute('use-system-preferred-theme', 'disabled');
         }
-        this.onThemeChange(theme);
     }
 
     public static getTheme(): Theme {
