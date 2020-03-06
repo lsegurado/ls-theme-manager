@@ -13,6 +13,7 @@ export default class ThemeManager {
 
         this.onThemeChange = onThemeChange;
         this.setTheme(theme);
+        onThemeChange(theme);
 
         const self = this;
         new MutationObserver(function (mutations) {
