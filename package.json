@@ -1,8 +1,12 @@
 {
-  "name": "ls-theme-manager",
+  "name": "@lsegurado/ls-theme-manager",
   "version": "1.0.6",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://npm.pkg.github.com/lsegurado"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lsegurado/ls-theme-manager.git"
   },
   "description": "Theme manager for vainilla JS",
   "files": [
@@ -17,7 +21,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "login": "npm login --registry=https://registry.npmjs.org",
+    "login": "npm login --registry=https://npm.pkg.github.com/ --scope=@lsegurado",
     "publish-npm": "npm run build && npm version patch && npm publish --access public"
   },
   "devDependencies": {
