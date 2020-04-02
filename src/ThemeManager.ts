@@ -1,8 +1,8 @@
-import { Theme } from "./Types";
+import { Theme, DocumentTheme } from "./Types";
 import ThemeUtils from "./ThemeUtils";
 
 export interface OnThemeChangeFunction {
-    (newTheme: Theme): void;
+    (newTheme: Theme, newDocumentTheme: DocumentTheme): void;
 }
 
 export default class ThemeManager {
@@ -14,10 +14,10 @@ export default class ThemeManager {
 
         this.onThemeChange = onThemeChange;
         ThemeUtils.setTheme(theme);
-        onThemeChange(theme);
+        onThemeChange(theme, ThemeUtils.getDocumentTheme());
 
         new MutationObserver(() => {
-            this.onThemeChange(ThemeUtils.getTheme());
+            this.onThemeChange(ThemeUtils.getTheme(), ThemeUtils.getDocumentTheme());
             localStorage.setItem('theme', ThemeUtils.getTheme());
         }).observe(document.documentElement, {
             attributes: true, //configure it to listen to attribute changes
